@@ -211,3 +211,8 @@ __marimo__/
 
 # Vim
 *.swp
+
+config.json
+
+.vscode/
+.micropico

@@ -1,7 +1,14 @@
-from microdot import Microdot
+from microdot import Microdot, send_file
+
+from io import read_pressure_voltage
 
 app = Microdot()
 
-@app.route('/')
+@app.route("/")
 def index(request):
-    return "<h1>Serveur Pico W Multi-WiFi</h1><p>Tout fonctionne !</p>", {'Content-Type': 'text/html'}
+    return send_file("templates/index.html")
+
+
+@app.route("/api/pressure-voltage/")
+def pressure_voltage(request):
+    return {"pressure_voltage": read_pressure_voltage()}

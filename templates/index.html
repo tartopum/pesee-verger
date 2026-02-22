@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>Pesée Verger</title>
+</head>
+<body>
+    <h1>Pesée Verger</h1>
+    <p id="pressure-voltages"></p>
+    <script>
+        const parent = document.getElementById('pressure-voltages');
+        setInterval(() => {
+            fetch("/api/pressure-voltage/")
+                .then(response => response.json())
+                .then(data => {
+                    const voltage = data.pressure_voltage;
+                    parent.innerHTML = voltage + ' mV<br />' + parent.innerHTML;
+                });
+        }, 1000);
+    </script>
+</body>
+</html>
